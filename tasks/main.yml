@@ -21,7 +21,6 @@
     group: "{{ target_user }}"
     mode: 0750
     state: directory
-    recurse: yes
     access_time: preserve
     modification_time: preserve
   tags: dir_creation
@@ -30,6 +29,7 @@
   copy:
     src: "{{ src_dir }}/{{ app_name }}/"
     dest: "{{ config_dir }}/"
+    backup: "{{ is_backup }}"
     owner: "{{ target_user }}"
     group: "{{ target_user }}"
     mode: '0644'
@@ -38,6 +38,7 @@
   copy:
     src: "{{ src_dir }}/{{ src_common_name }}/"
     dest: "{{ config_dir }}/"
+    backup: "{{ is_backup }}"
     owner: "{{ target_user }}"
     group: "{{ target_user }}"
     mode: '0644'
