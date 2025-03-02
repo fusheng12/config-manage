@@ -1,0 +1,7 @@
+# iam-apiserver.yml
+- hosts: iam-apiserver
+  vars:
+    src_dir: /data/config
+    app_name: iam-apiserver
+  roles:
+    - role: config-manage

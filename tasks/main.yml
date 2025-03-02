@@ -1,0 +1,43 @@
+# tasks/main.yml
+- name: 创建应用组
+  ansible.builtin.group:
+    name: "{{ target_user }}"
+    state: present
+
+- name: 创建应用用户
+  ansible.builtin.user:
+    name: "{{ target_user }}"
+    group: "{{ target_user }}"
+    home: "{{ home_dir }}"
+    shell: /bin/bash
+    create_home: yes
+    state: present
+  tags: user_creation
+
+- name: 创建配置文件数据目录
+  ansible.builtin.file:
+    path: "{{ config_dir }}"
+    owner: "{{ target_user }}"
+    group: "{{ target_user }}"
+    mode: 0750
+    state: directory
+    recurse: yes
+    access_time: preserve
+    modification_time: preserve
+  tags: dir_creation
+
+- name: 复制专属配置文件
+  copy:
+    src: "{{ src_dir }}/{{ app_name }}/"
+    dest: "{{ config_dir }}/"
+    owner: "{{ target_user }}"
+    group: "{{ target_user }}"
+    mode: '0644'
+
+- name: 复制公共配置文件
+  copy:
+    src: "{{ src_dir }}/{{ src_common_name }}/"
+    dest: "{{ config_dir }}/"
+    owner: "{{ target_user }}"
+    group: "{{ target_user }}"
+    mode: '0644'

@@ -1,0 +1,10 @@
+# 角色内部变量（vars/main.yml）：优先级较高，通常用于角色内部逻辑，不易被外部覆盖
+
+# 程序运行用户
+target_user: service
+
+# 应用运行用户家目录
+home_dir: /home/service
+
+# 配置文件目录
+config_dir: "{{ home_dir }}/app/{{ app_name }}/config"

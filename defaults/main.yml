@@ -1,0 +1,17 @@
+# 默认变量（defaults/main.yml）：优先级最低，设计为可被外部覆盖
+
+# 应用名称 和配置文件下的名称保持一致
+app_name: app-test
+
+# 配置文件所在目录 分应用存放
+#  config/
+#  ├── common
+#  ├── iam-apiserver
+#  ├── iam-authz-server
+#  ├── iamctl
+#  ├── iam-pump
+#  └── iam-watcher
+src_dir: /data/config
+
+# 公告配置文件目录名称
+src_common_name: common

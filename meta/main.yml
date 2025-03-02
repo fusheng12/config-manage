@@ -1,0 +1,6 @@
+# meta/main.yml
+dependencies: []
+galaxy_info:
+  author: fusheng
+  description: Role for deploying app config
+  license: MIT
